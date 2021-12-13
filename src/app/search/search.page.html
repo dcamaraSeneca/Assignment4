@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-searchbar (ionChange)="searchChanged($event)" [(ngModel)]="searchTerm" placeholder="Enter Movie"></ion-searchbar>
+ 
+  <ion-list>
+    <ion-item button *ngFor="let item of (results | async)" [routerLink]="['/details', item.imdbID]">
+      <img [src]="item.Poster" height="90" *ngIf="item.Poster != 'N/A'" alt="">
+
+      <ion-label class="ion-margin-horizontal" text-wrap>
+        <h1><b>{{item.Title}}</b></h1>
+        <ion-label color="danger"><h4>{{item.Year}}</h4></ion-label>
+        <h4>{{item.Type}}</h4>
+      </ion-label>
+      </ion-item>
+      
+  </ion-list>
+  <ion-label>{{total}}</ion-label>
+</ion-content>

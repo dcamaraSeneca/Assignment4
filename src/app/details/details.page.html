@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-label>
+      <h1 class="ion-padding-horizontal ion-padding-top"><strong>{{movie.Title}}</strong></h1>
+    </ion-label>
+    <ion-label>
+      <h4 class="ion-padding-horizontal ion-padding-bottom">{{movie.Year}} {{movie.Rated}} {{movie.Genre}}</h4>
+    </ion-label>
+    <ion-button class="ion-margin" slot="end" fill="clear" [routerLink]="['/search']">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-margin">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6"><img [src]="movie.Poster" height="220" *ngIf="movie.Poster != 'N/A'" alt=""></ion-col>
+        <ion-col size="6">
+          <ion-row>
+            <ion-label><strong>Director: </strong> {{movie.Director}}</ion-label>
+          </ion-row>
+          <ion-row class="ion-margin-top">
+            <ion-label><strong>Written By:</strong> {{movie.Writer}}</ion-label>
+          </ion-row>
+          <ion-row class="ion-margin-top">
+            <ion-label><strong>Starring: </strong>{{movie.Actors}}</ion-label>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-label>
+      <h1><strong>Plot</strong></h1>
+      <p>{{movie.Plot}}</p>
+    </ion-label>
+  </div>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="onClick()" expand="block">Add To Watchlist</ion-button>
+    <ion-button (click)="onClick()" color="danger" expand="block">Remove From Watchlist</ion-button>
+  </ion-toolbar>
+</ion-footer>
